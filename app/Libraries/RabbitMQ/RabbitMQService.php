@@ -27,7 +27,7 @@ class RabbitMQService
             $queueName,
             '',
             false,
-            true,
+            false,
             false,
             false,
             $callback
