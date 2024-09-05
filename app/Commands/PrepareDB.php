@@ -5,10 +5,10 @@ namespace App\Commands;
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
 
-class CreateDB extends BaseCommand
+class PrepareDB extends BaseCommand
 {
     protected $group = 'Database';
-    protected $name = 'create:db';
+    protected $name = 'prepare:db';
     protected $description = 'Criating database, running migrations.';
 
     private $dbGroup = 'default';
