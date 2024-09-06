@@ -12,12 +12,12 @@ class RabbitMQConsumer extends BaseCommand
     const QUEUE_NAME = 'queue_queen';
     protected $group       = 'RabbitMQ';
     protected $name        = 'mq:consume';
-    protected $description = 'Starts the RabbitMQ consumer....';
+    protected $description = 'RabbitMQ consumer started';
 
     public function run(array $params)
     {
-        $rabbitMQService = new RabbitMQService();
         CLI::write($this->description, 'yellow');
+        $rabbitMQService = new RabbitMQService();
         $callback = function ($msg) {
             MessageProcessor::execute($msg);
         };

@@ -4,31 +4,21 @@ namespace App\Libraries\RabbitMQ;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-class RabbitMQFactory {
+helper('env');
+class RabbitMQFactory
+{
+  public static function createConnection(string $connectionName = "default"): AMQPStreamConnection
+  {
+    $prefix = "rabbitmq.$connectionName.";
 
-    public static function createConnection(string $connectionName = ""): AMQPStreamConnection {
-      switch ($connectionName) {
-        case 'pix':
-          $connectionParams = [
-            'host' => 'localhost',
-            'port' => 5672,
-            'user' => 'guest',
-            'password' => 'guest',
-            'vhost' => '/' // Optional virtual host
-          ];
-          break;
-        default:
-          $connectionParams = [
-            'host' => 'localhost',
-            'port' => 5672,
-            'user' => 'guest',
-            'password' => 'guest',
-            'vhost' => '/' // Optional virtual host
-          ];
-          break;
-      }
+    $connectionParams = [
+      'host' => getenv($prefix . "host"),
+      'port' => getenv($prefix . "port"),
+      'user' => getenv($prefix . "user"),
+      'password' => getenv($prefix . "password"),
+      'vhost' => getenv($prefix . "vhost")
+    ];
 
-      // Unpack the array into AMQPStreamConnection arguments
-      return new AMQPStreamConnection(...$connectionParams);
-    }
+    return new AMQPStreamConnection(...$connectionParams);
+  }
 }

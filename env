@@ -14,7 +14,7 @@
 # ENVIRONMENT
 #--------------------------------------------------------------------
 
-# CI_ENVIRONMENT = production
+CI_ENVIRONMENT = development
 
 #--------------------------------------------------------------------
 # APP
@@ -29,11 +29,27 @@
 #--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
+database.default.hostname = localhost
+database.default.database = project_rabbitmq
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
+database.default.port = 3306
+
+#--------------------------------------------------------------------
+# RabbitMQ
+#--------------------------------------------------------------------
+rabbitmq.default.host = 'localhost',
+rabbitmq.default.port = 5672,
+rabbitmq.default.user = 'guest',
+rabbitmq.default.password = 'guest',
+rabbitmq.default.vhost = '/'
 
 # database.default.hostname = localhost
-# database.default.database = ci4
+# database.default.database = test
 # database.default.username = root
-# database.default.password = root
+# database.default.password =
 # database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 # database.default.port = 3306
